@@ -1,5 +1,6 @@
 package com.example.lichunlin.coolweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.media.Image;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.lichunlin.coolweather.Gson.Forecast;
 import com.example.lichunlin.coolweather.Gson.Weather;
+import com.example.lichunlin.coolweather.service.AutoUpdateService;
 import com.example.lichunlin.coolweather.util.HttpUtil;
 import com.example.lichunlin.coolweather.util.Utility;
 
@@ -207,6 +209,8 @@ public class WeatherActivity extends AppCompatActivity {
         carWashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
     /**
      * 加载必应每日一图
